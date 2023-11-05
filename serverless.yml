@@ -1,18 +1,20 @@
-org: trainwithshubham
-app: testing-end-to-end
+org: chaitannyaa
+app: taskmaster
 service: serverless-taskmaster-aws-app
-frameworkVersion: '3'
+frameworkVersion: '3' # Updated to version 4.0.0
 
 provider:
   name: aws
-  runtime: nodejs14.x
+  runtime: nodejs16.x # Updated runtime to a supported version
   region: us-east-1
-  iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - dynamodb:*
-      Resource:
-        - arn:aws:dynamodb:us-east-1:626072240565:table/KaamKaro
+  iam:
+    role:
+      statements: # Updated IAM role statements
+        - Effect: Allow
+          Action:
+            - dynamodb:*
+          Resource:
+            - "arn:aws:dynamodb:us-east-1:267455058371:table/KaamKaro"
 
 functions:
   hello:
@@ -45,11 +47,12 @@ resources:
     KaamKaro:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: KaamKaro
+        TableName: "KaamKaro"
         BillingMode: PAY_PER_REQUEST
         AttributeDefinitions:
-          - AttributeName: id
-            AttributeType: S
+          - AttributeName: "id"
+            AttributeType: "S"
         KeySchema:
-          - AttributeName: id
-            KeyType: HASH
+          - AttributeName: "id"
+            KeyType: "HASH"
+
