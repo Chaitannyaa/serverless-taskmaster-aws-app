@@ -1,7 +1,7 @@
 org: chaitannyaa
 app: taskmaster
 service: serverless-taskmaster-aws-app
-frameworkVersion: '3' # Updated to version 4.0.0
+frameworkVersion: '3' 
 
 provider:
   name: aws
